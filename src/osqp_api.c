@@ -1259,8 +1259,8 @@ OSQPInt osqp_update_rho_vec(OSQPSolver* solver,
   solver->settings->rho = c_min(c_max(rho_vec_new[0], OSQP_RHO_MIN), OSQP_RHO_MAX);
 
   if (solver->settings->rho_is_vec) {
-    OSQPVectorf_to_raw(work->rho_vec, rho_vec_new);
     // Update rho_vec and rho_inv_vec
+    OSQPVectorf_from_raw(work->rho_vec, rho_vec_new);
     // OSQPVectorf_set_scalar_conditional(work->rho_vec,
     //                                    work->constr_type,
     //                                    OSQP_RHO_MIN,                                     //constr == -1
@@ -1286,6 +1286,9 @@ OSQPInt osqp_update_rho_vec(OSQPSolver* solver,
 
 #endif // OSQP_EMBEDDED_MODE != 1
 
+const OSQPInt* osqp_get_constr_type(OSQPSolver* solver) {
+  return OSQPVectori_data(solver->work->constr_type);
+}
 
 
 /****************************

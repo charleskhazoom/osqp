@@ -276,6 +276,8 @@ OSQP_API OSQPInt osqp_update_rho_vec(OSQPSolver* solver,
 
 # endif /* if EMBEDDED != 1 */
 
+OSQP_API const OSQPInt* osqp_get_constr_type(OSQPSolver* solver);
+
 /** @} */
 
 /* ------------------ Derivative functions ----------------- */
