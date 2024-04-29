@@ -78,7 +78,7 @@ void print_setup_header(const OSQPSolver* solver) {
   nnz = OSQPMatrix_get_nz(data->P) + OSQPMatrix_get_nz(data->A);
 
   print_line();
-  c_print("           OSQP v%s  -  Operator Splitting QP Solver\n"
+  c_print("           OSQP v%s  -  Operator Splitting QP Solver CHARLES FORK !!\n"
           "              (c) Bartolomeo Stellato,  Goran Banjac\n"
           "        University of Oxford  -  Stanford University 2021\n",
           OSQP_VERSION);

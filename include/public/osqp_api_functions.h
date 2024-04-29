@@ -270,6 +270,10 @@ OSQP_API OSQPInt osqp_update_settings(OSQPSolver*         solver,
 OSQP_API OSQPInt osqp_update_rho(OSQPSolver* solver,
                                  OSQPFloat   rho_new);
 
+
+OSQP_API OSQPInt osqp_update_rho_vec(OSQPSolver* solver,
+                                 OSQPFloat*   rho_vec_new);
+
 # endif /* if EMBEDDED != 1 */
 
 /** @} */

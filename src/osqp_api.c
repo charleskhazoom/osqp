@@ -1229,6 +1229,61 @@ OSQPInt osqp_update_rho(OSQPSolver* solver,
   return exitflag;
 }
 
+OSQPInt osqp_update_rho_vec(OSQPSolver* solver,
+                        OSQPFloat*     rho_vec_new) {
+
+    OSQPInt exitflag;
+    OSQPWorkspace *work;
+
+    // Check if workspace has been initialized
+    if (!solver || !solver->work) return osqp_error(OSQP_WORKSPACE_NOT_INIT_ERROR);
+    work = solver->work;
+
+  // Check value of rho
+  if (rho_vec_new[0] <= 0) {
+    c_eprint("rho must be positive");
+    return 1;
+  }
+
+#ifdef OSQP_ENABLE_PROFILING
+  if (work->rho_update_from_solve == 0) {
+    if (work->clear_update_time == 1) {
+      work->clear_update_time = 0;
+      solver->info->update_time = 0.0;
+    }
+    osqp_tic(work->timer); // Start timer
+  }
+#endif /* ifdef OSQP_ENABLE_PROFILING */
+
+  // Update rho in settings
+  solver->settings->rho = c_min(c_max(rho_vec_new[0], OSQP_RHO_MIN), OSQP_RHO_MAX);
+
+  if (solver->settings->rho_is_vec) {
+    OSQPVectorf_to_raw(work->rho_vec, rho_vec_new);
+    // Update rho_vec and rho_inv_vec
+    // OSQPVectorf_set_scalar_conditional(work->rho_vec,
+    //                                    work->constr_type,
+    //                                    OSQP_RHO_MIN,                                     //constr == -1
+    //                                    solver->settings->rho,                            //constr == 0
+    //                                    OSQP_RHO_EQ_OVER_RHO_INEQ*solver->settings->rho); //constr == 1
+
+    OSQPVectorf_ew_reciprocal(work->rho_inv_vec, work->rho_vec);
+  }
+  else {
+    work->rho_inv = 1. / solver->settings->rho;
+  }
+
+  // Update rho_vec in KKT matrix
+  exitflag = work->linsys_solver->update_rho_vec(work->linsys_solver, work->rho_vec, solver->settings->rho);
+
+#ifdef OSQP_ENABLE_PROFILING
+  if (work->rho_update_from_solve == 0)
+    solver->info->update_time += osqp_toc(work->timer);
+#endif /* ifdef OSQP_ENABLE_PROFILING */
+
+  return exitflag;
+}
+
 #endif // OSQP_EMBEDDED_MODE != 1
 
 
