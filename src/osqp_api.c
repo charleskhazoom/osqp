@@ -1261,12 +1261,6 @@ OSQPInt osqp_update_rho_vec(OSQPSolver* solver,
   if (solver->settings->rho_is_vec) {
     // Update rho_vec and rho_inv_vec
     OSQPVectorf_from_raw(work->rho_vec, rho_vec_new);
-    // OSQPVectorf_set_scalar_conditional(work->rho_vec,
-    //                                    work->constr_type,
-    //                                    OSQP_RHO_MIN,                                     //constr == -1
-    //                                    solver->settings->rho,                            //constr == 0
-    //                                    OSQP_RHO_EQ_OVER_RHO_INEQ*solver->settings->rho); //constr == 1
-
     OSQPVectorf_ew_reciprocal(work->rho_inv_vec, work->rho_vec);
   }
   else {
