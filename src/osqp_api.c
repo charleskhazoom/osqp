@@ -682,6 +682,12 @@ osqp_profiler_sec_push(OSQP_PROFILER_SEC_OPT_SOLVE);
   }        // End of ADMM for loop
 
 
+  // OSQPFloat* rho_vec_data =  OSQPVectorf_data(work->rho_vec);
+  // OSQPInt rho_vec_length = OSQPVectorf_length(work->rho_vec);
+  // for (OSQPInt i = 0; i < rho_vec_length; i++) {
+  //   printf("rho_vec[%d] = %f\n", i, rho_vec_data[i]);
+  // }
+
   // Update information and check termination condition if it hasn't been done
   // during last iteration (max_iter reached or check_termination disabled)
   if (!can_check_termination) {
