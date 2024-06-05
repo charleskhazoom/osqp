@@ -1015,7 +1015,7 @@ OSQPInt osqp_update_data_vec(OSQPSolver*      solver,
 
 #if OSQP_EMBEDDED_MODE != 1
       /* Update rho_vec and refactor if constraints type changes */
-      if (solver->settings->rho_is_vec) exitflag = update_rho_vec(solver);
+      // if (solver->settings->rho_is_vec) exitflag = update_rho_vec(solver);
 #endif /* #if OSQP_EMBEDDED_MODE != 1 */
   }
 
