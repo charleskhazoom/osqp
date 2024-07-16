@@ -1,5 +1,5 @@
 # The Operator Splitting QP Solver
-# This repository is forked from the original OSQP repo. It augments the original API for selecting a different value of rho for each constraint.
+## This repository is forked from the original OSQP repo. It augments the original API for selecting a different value of rho for each constraint.
 
 [![CI](https://github.com/osqp/osqp/actions/workflows/main.yml/badge.svg)](https://github.com/osqp/osqp/actions/workflows/main.yml)
 [![Code coverage](https://coveralls.io/repos/github/osqp/osqp/badge.svg?branch=master)](https://coveralls.io/github/osqp/osqp?branch=master)
