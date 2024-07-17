@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.18)
-set(CMAKE_C_COMPILER /usr/bin/clang-18)
-set(CMAKE_CXX_COMPILER /usr/bin/clang++-18)
+set(CMAKE_C_COMPILER "clang-18")
+set(CMAKE_CXX_COMPILER "clang++-18")
 project(osqp)
 
 include(GNUInstallDirs)
