@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.18)
-set(CMAKE_C_COMPILER /usr/bin/clang-18 CACHE STRING "C compiler" FORCE)
-set(CMAKE_CXX_COMPILER /usr/bin/clang++-18 CACHE STRING "C++ compiler" FORCE)
-
+message(STATUS "###########################################")
+message(STATUS "#           Loading custom_osqp           #")
+message(STATUS "#      from a GitHub fork repository      #")
+message(STATUS "###########################################")
 
 project(osqp)
+
 
 include(GNUInstallDirs)
 include(CMakeDependentOption)
@@ -564,3 +566,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND OSQP_BUILD_UNITTESTS)
 
   add_subdirectory(tests)
 endif()
+
+message(STATUS "###########################################")
+message(STATUS "#       End of custom_osqp loading        #")
+message(STATUS "###########################################")
