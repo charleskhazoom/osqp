@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.18)
-set(CMAKE_C_COMPILER "/usr/bin/clang-18" CACHE INTERNAL "use clang-18 only for this project")
-set(CMAKE_CXX_COMPILER "/usr/bin/clang++-18" CACHE INTERNAL "use clang-18 only for this project")
+set(CMAKE_C_COMPILER /usr/bin/clang-18 CACHE STRING "C compiler" FORCE)
+set(CMAKE_CXX_COMPILER /usr/bin/clang++-18 CACHE STRING "C++ compiler" FORCE)
+
+
 project(osqp)
 
 include(GNUInstallDirs)
