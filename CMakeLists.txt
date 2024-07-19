@@ -210,7 +210,7 @@ cmake_dependent_option( OSQP_CODEGEN "Enable code generation"
 message(STATUS "Code generation: ${OSQP_CODEGEN}")
 
 cmake_dependent_option( OSQP_ENABLE_DERIVATIVES "Enable derivative computation"
-                        ON
+                        OFF
                         "OSQP_ALGEBRA_BUILTIN;NOT DEFINED EMBEDDED" OFF )
 
 message( STATUS "Derivative support: ${OSQP_ENABLE_DERIVATIVES}" )
