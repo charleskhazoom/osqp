@@ -67,7 +67,6 @@ option(OSQP_BUILD_STATIC_LIB "Build the static library" ON)
 option(CUSTOM_OSQP_MARCH_ALDERLAKE "Build with -march=alderlake for robot's computer" OFF)
 
 
-
 cmake_dependent_option( OSQP_BUILD_DEMO_EXE
                         "Build the demo executable (requires the static library)"
                         ON    # Default to on
@@ -283,8 +282,10 @@ if(NOT MSVC)
   else()
     if(CUSTOM_OSQP_MARCH_ALDERLAKE)
       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -march=alderlake")
+      message(STATUS "Building with -march=alderlake")
     else()
       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -march=native")
+      message(STATUS "Building with -march=native")
     endif()
   endif()
 
