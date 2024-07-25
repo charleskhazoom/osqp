@@ -86,9 +86,9 @@ set(OSQP_ALGEBRA_BACKEND
     "builtin"
     CACHE STRING "The Algebra to use (builtin/mkl/cuda)")
 
-option(OSQP_ENABLE_PRINTING "Enable solver printing" OFF)
-option(OSQP_ENABLE_PROFILING "Enable solver profiling (timing)" OFF)
-option(OSQP_ENABLE_INTERRUPT "Enable user interrupt (e.g. Ctrl-C)" OFF)
+option(OSQP_ENABLE_PRINTING "Enable solver printing" ON)
+option(OSQP_ENABLE_PROFILING "Enable solver profiling (timing)" ON)
+option(OSQP_ENABLE_INTERRUPT "Enable user interrupt (e.g. Ctrl-C)" ON)
 
 set(OSQP_PROFILER_ANNOTATIONS "OFF" CACHE STRING
     "Enable profiler annotations (NVTX for CUDA backend, ITT otherwise)")
@@ -210,7 +210,7 @@ cmake_dependent_option( OSQP_CODEGEN "Enable code generation"
 message(STATUS "Code generation: ${OSQP_CODEGEN}")
 
 cmake_dependent_option( OSQP_ENABLE_DERIVATIVES "Enable derivative computation"
-                        OFF
+                        ON
                         "OSQP_ALGEBRA_BUILTIN;NOT DEFINED EMBEDDED" OFF )
 
 message( STATUS "Derivative support: ${OSQP_ENABLE_DERIVATIVES}" )
