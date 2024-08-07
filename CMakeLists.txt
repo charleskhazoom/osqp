@@ -65,6 +65,7 @@ include(Utils)
 option(OSQP_BUILD_SHARED_LIB "Build the shared library" ON)
 option(OSQP_BUILD_STATIC_LIB "Build the static library" ON)
 option(CUSTOM_OSQP_MARCH_ALDERLAKE "Build with -march=alderlake for robot's computer" OFF)
+option(CUSTOM_OSQP_MARCH_SAPPHIRE "Build with -march=sapphirerapids for robot's computer" OFF)
 
 
 cmake_dependent_option( OSQP_BUILD_DEMO_EXE
@@ -283,6 +284,9 @@ if(NOT MSVC)
     if(CUSTOM_OSQP_MARCH_ALDERLAKE)
       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -march=alderlake")
       message(STATUS "Building with -march=alderlake")
+    elseif(CUSTOM_OSQP_MARCH_SAPPHIRE)
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -march=sapphirerapids")
+	message(STATUS "Building with -march=sapphirerapids")
     else()
       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -march=native")
       message(STATUS "Building with -march=native")
